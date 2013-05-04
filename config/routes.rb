@@ -1,8 +1,10 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'home#show'
   end
-  root :to => "home#index"
+  devise_scope :user do
+  	root :to => "devise/registrations#new"
+  end
   devise_for :users
   resources :users
 end
